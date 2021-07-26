@@ -3,18 +3,38 @@ import yfinance as yf
 
 #get intra-day trading data
 def get_yahoo_data_intraday(symbol,period,interval):
+    """
+    Returns a pandas dataframe of historical stock price from symbols,
+    over a day period and within an intraday interval. The data is taken from
+    the Yahoo! finance website
+
+    Parameters
+        -----------
+        symbol: String of the stock
+        period: String day period, possible values:  1d, 5d, 1mo
+        interval: String intraday interval, possible values: 1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h
+    """
     stock = yf.Ticker(symbol.upper())
-    dic = stock.history(period,interval)
-    dic.symbol =symbol
-    return dic
+    df = stock.history(period,interval)
+    df.symbol =symbol
+    return df
 
 #get daily trading data
 def get_yahoo_data_daily(symbol,period="max"):
+    """
+    Returns a pandas dataframe of historical stock price from symbols,
+    over a day period. The data is taken from the Yahoo! finance website
+
+    Parameters
+        -----------
+        symbol: String of the stock
+        period: String day period, possible values: 1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max
+    """
     stock = yf.Ticker(symbol)
 
-    dic =  stock.history(period)
-    dic.symbol = symbol
-    return dic 
+    df =  stock.history(period)
+    df.symbol = symbol
+    return df 
 
 
 

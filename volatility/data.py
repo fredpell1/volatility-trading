@@ -1,7 +1,30 @@
 import pandas
 import yfinance as yf
 
-#test
+def get_yahoo_option_data(symbol,call,put):
+    """
+    symbol: String of the stock
+    call: bool true if you want the call data
+    put: bool true if you want the put data
+    Returns a padnas dataframe of options chain for call,put or both
+    depending on the values for call and put.
+    """
+    tick = yf.Ticker(symbol.upper())
+    data = tick.option_chain()
+    if(call == True and put == False):
+        df = data[0]
+        df.symbol = symbol
+        return df 
+    if(put == True and call==False):
+        df = data[1]
+        df.symbol = symbol 
+    if(put == True and call == True):
+        data[0].symbol = symbol
+        data[1].symbol = symbol
+        return data 
+    else:
+        return "One of call or put has to be true"
+
 
 #get intra-day trading data
 def get_yahoo_data_intraday(symbol,period,interval):

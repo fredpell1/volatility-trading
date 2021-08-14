@@ -22,7 +22,7 @@ def get_yahoo_option_data(symbol,call,put):
         data[0].symbol = symbol
         data[1].symbol = symbol
         return data 
-    else:
+    if(put== False and call == False):
         return "One of call or put has to be true"
 
 

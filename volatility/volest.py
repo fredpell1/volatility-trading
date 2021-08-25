@@ -220,6 +220,7 @@ class VolatilityEstimator(object):
 
         # set and format the y-axis labels
         locs = cones.get_yticks()
+        cones.yaxis.set_ticks(locs)
         cones.set_yticklabels(map(f, locs))
 
         # turn on the grid
@@ -237,6 +238,7 @@ class VolatilityEstimator(object):
 
         # set and format the y-axis labels
         locs = box.get_yticks()
+        box.yaxis.set_ticks(locs)
         box.set_yticklabels(map(f, locs))
 
         # move the y-axis ticks on the right side
@@ -308,6 +310,7 @@ class VolatilityEstimator(object):
         
         # set and format the y-axis labels
         locs = cones.get_yticks()
+        cones.yaxis.set_ticks(locs) #to remove the issue
         cones.set_yticklabels(map(f, locs))
         
         # turn on the grid
@@ -325,6 +328,7 @@ class VolatilityEstimator(object):
         
         # set and format the y-axis labels
         locs = box.get_yticks()
+        box.yaxis.set_ticks(locs) #to remove the issue
         box.set_yticklabels(map(f, locs))
         
         # move the y-axis ticks on the right side
@@ -381,6 +385,7 @@ class VolatilityEstimator(object):
         
         # set and format the y-axis labels
         locs = cones.get_yticks()
+        cones.yaxis.set_ticks(locs) #to remove the issue
         cones.set_yticklabels(map(f, locs))
         
         # turn on the grid
@@ -398,6 +403,7 @@ class VolatilityEstimator(object):
         
         # set and format the y-axis labels
         locs = box.get_yticks()
+        box.yaxis.set_ticks(locs)
         box.set_yticklabels(map(f, locs))
         
         # move the y-axis ticks on the right side
@@ -462,6 +468,7 @@ class VolatilityEstimator(object):
         
         # set and format the y-axis labels
         locs = cones.get_yticks()
+        cones.yaxis.set_ticks(locs)
         cones.set_yticklabels(map(f, locs))
         
         # turn on the grid
@@ -481,6 +488,7 @@ class VolatilityEstimator(object):
         
         # set and format the y-axis labels
         locs = box.get_yticks()
+        box.yaxis.set_ticks(locs)
         box.set_yticklabels(map(f, locs))
         
         # move the y-axis ticks on the right side
@@ -503,7 +511,7 @@ class VolatilityEstimator(object):
         
         return fig, plt
 
-    def histogram(self, window=90, bins=100, normed=True):
+    def histogram(self, window=90, bins=100, normalized=True):
         """
         
         Parameters
@@ -526,9 +534,9 @@ class VolatilityEstimator(object):
 
         fig = plt.figure(figsize=(8, 6))
         
-        n, bins, patches = plt.hist(estimator, bins, normed=normed, facecolor='blue', alpha=0.25)
+        n, bins, patches = plt.hist(estimator, bins, density = normalized)
         
-        if normed:
+        if normalized:
             y = norm.pdf(bins, mean, std)
             plt.plot(bins, y, 'g--', linewidth=1)
 
@@ -589,6 +597,7 @@ class VolatilityEstimator(object):
         
         # set and format the y-axis labels
         locs = cones.get_yticks()
+        cones.yaxis.set_ticks(locs)
         cones.set_yticklabels(map(f, locs))
         
         # turn on the grid
@@ -659,6 +668,7 @@ class VolatilityEstimator(object):
 
         # set and format the y-axis labels
         locs = cones.get_yticks()
+        cones.yaxis.set_ticks(locs)
         cones.set_yticklabels(map(f, locs))
 
         # turn on the grid
